@@ -97,7 +97,7 @@ async def process_query(request: QueryRequest):
                 {"role": "model", "parts": model_prompt_1+model_prompt_1 }
             ]
         )
-            
+        
         question = """ give me reponse in following format :
         {"guilty_or_not": "yes or no",
         "articles_violated": [],
