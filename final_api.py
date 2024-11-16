@@ -45,6 +45,10 @@ class QueryRequest(BaseModel):
     case_details: str
     case_id: str
     case_title: str
+    
+class ChatRequest(BaseModel):
+    user_query: str
+    case_id : str
 
 # Helper function to get query embeddings
 def get_query_embedding(text):
@@ -117,7 +121,7 @@ async def process_query(request: QueryRequest):
     
 
 @app.post("/chat_query/")
-async def process_query(request: QueryRequest):
+async def process_query(request: ChatRequest):
     try:
         # Extract query
         case_id = request.case_id
