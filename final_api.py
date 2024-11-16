@@ -121,7 +121,7 @@ async def process_query(request: QueryRequest):
     
 
 @app.post("/chat_query/")
-async def process_query(request: ChatRequest):
+async def process_chat_query(request: ChatRequest):
     try:
         # Extract query
         case_id = request.case_id
