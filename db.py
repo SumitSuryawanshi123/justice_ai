@@ -90,4 +90,4 @@ def retrieve_conversation_by_case(case_id):
 # )
 
 # # Retrieve and print the conversation for a specific case_id
-# print(get_first_record("abc123"))
+# print(retrieve_conversation_by_case("123abcd"))

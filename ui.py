@@ -14,8 +14,8 @@ if st.button("Submit"):
         # Show a loading spinner
         with st.spinner("Processing your query..."):
             # FastAPI endpoint
-            api_url = "http://127.0.0.1:8000/process_query/"  # Replace with your FastAPI server URL if different
-            payload = {"case_details": query, "case_id":"123abc","case_title":"xyz"}
+            api_url = "https://justice-ai-b2lc.onrender.com//process_query/"  # Replace with your FastAPI server URL if different
+            payload = {"case_details": query, "case_id":"123abcd","case_title":"xyz"}
             headers = {
                 "Content-Type": "application/json",
             }

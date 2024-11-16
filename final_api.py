@@ -111,21 +111,26 @@ async def process_query(request: QueryRequest):
         insert_conversation(case_id = case_id, title = case_title, question = question, answer = response.text)
         
         return  {"response": response.text}
-            
-            
 
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+
+@app.post("/chat_query/")
+async def process_query(request: QueryRequest):
+    try:
+        # Extract query
+        case_id = request.case_id
+        user_query = request.user_query
+    
+
+        chat = model.start_chat(
+            history = retrieve_conversation_by_case(case_id)
+        )
+            
+        response = chat.send_message(user_query)
         
-        
-        response = chat.send_message("""give me reponse in following format :
-        {"guilty_or_not": "",
-        "articles_violated": [],
-        "points_of_violation":[],
-        "comment" : ""}  if person is not guilty keep articles_violated and points_of_violation empty""")
-        
-        
-        
-        
-        return {"response": response.text}
+        return  {"response": response.text}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
